@@ -1,0 +1,1 @@
+export const mainurl ="http://127.0.0.1:40675/api/v1";
