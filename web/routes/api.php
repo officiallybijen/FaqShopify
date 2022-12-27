@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return "Hello API";
+    return json_encode(["msg"=>"api he  llo"]);
 });
 
 Route::group(["prefix" => "v1"], function () {
