@@ -1,11 +1,11 @@
 <test>
-  <link rel="stylesheet" href="https://cdn.ayroui.com/1.0/css/bootstrap.min.css"/>
-  <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdn.ayroui.com/1.0/css/starter.css"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://cdn.ayroui.com/1.0/css/bootstrap.min.css">
+  <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.ayroui.com/1.0/css/starter.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-  <p id="faq-title" style="font-size: 50px;background-color: {{ block.settings.faq-bg-color }}; color: {{ block.settings.faq-font-color }}; font-family: {{ block.settings.faq-font }},sans-serif;">
+  <p id="faq-title" style="font-size: 50px;background-color: {{ block.settings.faq-bg-color }}; color: {{ block.settings.faq-font-color }};">
     {{ block.settings.heading }}
   </p>
   {%- comment -%}
@@ -25,7 +25,7 @@
     </div>{%- endcomment -%}
   <dl id="faq" style="list-style: none;"></dl>
   <script>
-    fetch("http://localhost:34231/api/v1/faq/getContent/" + {{ block.settings.faq }}).then((res) => res.json()).then((data) => {
+    fetch("http://localhost:44035/api/v1/faq/getContent/" + {{ block.settings.faq }}).then((res) => res.json()).then((data) => {
       console.log(data)
       data.data.map((item, index) => {
         index = index + 1
@@ -43,7 +43,6 @@
   </script>
 </test>
 
-
 {% schema %}
   {
     "name": "FAQ section",
@@ -59,24 +58,16 @@
         "id": "heading",
         "label": "Heading",
         "default": "FAQ heading"
-      },
-      {
+      }, {
         "type": "color",
         "id": "faq-bg-color",
         "label": "Heading Background Color",
         "default": "#7CDCB9"
-      },
-      {
+      }, {
         "type": "color",
         "id": "faq-font-color",
         "label": "Title Color",
         "default": "#fff"
-      },
-      {
-        "type": "font_picker",
-        "id": "faq-font",
-        "label": "Font Family",
-        "default": "serif"
       }, {
         "type": "select",
         "id": "faq",

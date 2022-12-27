@@ -153,6 +153,7 @@ function FaqPage() {
                 faq.map((item, index) => {
                     return (
                         <CustomCard
+                            key={index}
                             question={item.question}
                             answer={item.answer}
                             q_id={item.q_id}
