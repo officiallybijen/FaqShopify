@@ -50,6 +50,7 @@ class ContentController extends Controller
     {
         return Content::find($id);
     }
+    
 
     /**
      * Show the form for editing the specified resource.

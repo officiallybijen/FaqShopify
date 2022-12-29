@@ -17,6 +17,7 @@ class CreateFaqsTable extends Migration
             $table->id();
             $table->string('store_id');
             $table->string('content_title');
+            $table->string('shortcode')->unique();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });

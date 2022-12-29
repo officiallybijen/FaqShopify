@@ -5,7 +5,9 @@ import { mainurl } from "../url";
 import CustomCard from "./CustomCard";
 
 function CreateFaq() {
-    const [faq, setFaq] = useState([{ q_id: 1, question: "", answer: "" }]);
+    const [faq, setFaq] = useState([
+        { q_id: 1, question: "", answer: "", upvote: 0, downvote: 0 },
+    ]);
     const [name, setName] = useState("");
     const [active, setActive] = useState(false);
     const [isLoading, setLoading] = useState(false);
@@ -97,8 +99,11 @@ function CreateFaq() {
                             <CustomCard
                                 question={item.question}
                                 answer={item.answer}
+                                upvote={item.upvote}
+                                downvote={item.downvote}
                                 q_id={item.q_id}
                                 index={index}
+                                key={index}
                                 faq={faq}
                                 setFaq={setFaq}
                                 handleDelete={handleDelete}
@@ -124,11 +129,13 @@ function CreateFaq() {
                                         q_id: faq[faq.length - 1].q_id + 1,
                                         question: "",
                                         answer: "",
+                                        upvote: 0,
+                                        downvote: 0,
                                     },
                                 ]); // push and id ??
                             }}
                         >
-                            Add a question
+                            Add a question                                                                                                                                                                                                                                                                                                                                                                     
                         </button>
                     </div>
                 </div>

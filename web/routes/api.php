@@ -29,6 +29,7 @@ Route::group(["prefix" => "v1"], function () {
     });
     Route::group(["prefix" => "content"], function () {
         Route::get('{content_id}', [ContentController::class, 'show']); //get content
+        Route::get('/shortcode/{shortcode}', [FaqController::class, 'get']); //just for theme
         Route::put('/edit/{id}', [ContentController::class, 'update']); //edit faq
     });
 });

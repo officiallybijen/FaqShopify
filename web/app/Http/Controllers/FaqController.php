@@ -45,9 +45,11 @@ class FaqController extends Controller
     {
         try {
             $title = $request->meta['title'];
+            $sc = strtolower(str_replace(" ","-",$title));
             $faq = new Faq();
             $faq->store_id = $request->meta['store_id'];
             $faq->content_title = $title;
+            $faq->shortcode = $sc."-".(string)time();
             $faq->save();
             //$faq->id;
             $content = new Content();
@@ -83,6 +85,27 @@ class FaqController extends Controller
             return [
                 "status" => 200,
                 "title" => $faq->content_title,
+                "data" => json_decode($data->content),
+                "msg" => "Content fetched successfully"
+            ];
+        } catch (Exception $e) {
+            return response(["msg" => $e->getMessage()], 400);
+        } catch (Error $e) {
+            return response(["msg" => $e->getMessage()], 400);
+        }
+    }
+    
+
+    //only theme
+    public function get($shortcode)
+    {
+        try {
+            $faq = Faq::where("shortcode",$shortcode)->first();
+            $data = $faq->content;
+            return [
+                "status" => 200,
+                "title" => $faq->content_title,
+                "faq_id" => $faq->id,
                 "data" => json_decode($data->content),
                 "msg" => "Content fetched successfully"
             ];

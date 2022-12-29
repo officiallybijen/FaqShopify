@@ -9,6 +9,8 @@ const CustomCard = ({
     setFaq,
     question,
     answer,
+    upvote,
+    downvote,
     index,
     handleDelete,
 }) => {
@@ -43,18 +45,13 @@ const CustomCard = ({
     };
 
     return (
-        <div class="col-sm-6 mb-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Question {index + 1}: </h5>
+        <div className="col-sm-6 mb-3">
+            <div className="card">
+                <div className="card-body">
+                    <h5 className="card-title">Question {index + 1}: {upvote} {downvote}</h5>
                     <form>
-                        <div class="mb-3">
-                            <label
-                                for="exampleInputEmail1"
-                                className="form-label"
-                            >
-                                Question
-                            </label>
+                        <div className="mb-3">
+                            <label className="form-label">Question</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -68,12 +65,7 @@ const CustomCard = ({
                             />
                         </div>
                         <div className="mb-3">
-                            <label
-                                for="exampleInputPassword1"
-                                className="form-label"
-                            >
-                                Answer
-                            </label>
+                            <label className="form-label">Answer</label>
                             <ReactQuill
                                 theme="snow"
                                 value={ans}
@@ -92,7 +84,6 @@ const CustomCard = ({
                         <button
                             onClick={() => {
                                 setActive(true);
-                                if (res) handleDelete(q_id);
                             }}
                             className="btn btn-danger mb-2"
                             type="button"
